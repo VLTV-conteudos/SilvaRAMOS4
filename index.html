@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silva Ramos - Acessórios Automotivos</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #222;
+      padding: 20px;
+    }
+    header img {
+      max-height: 80px;
+    }
+    .carousel-container {
+      position: relative;
+      max-width: 900px;
+      margin: 40px auto;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    .carousel-slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 200%;
+    }
+    .carousel-slides img {
+      width: 100%;
+      object-fit: cover;
+    }
+    button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+    .prev {
+      left: 10px;
+    }
+    .next {
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="Logo Silva Ramos">
+</header>
+
+<div class="carousel-container">
+  <div class="carousel-slides" id="slides">
+    <img src="6.jpg" alt="Imagem 1">
+    <img src="Imagem do WhatsApp de 2025-04-14 à(s) 20.47.48_74b01248.jpg" alt="Imagem 2">
+  </div>
+  <button class="prev" onclick="prevSlide()">&#10094;</button>
+  <button class="next" onclick="nextSlide()">&#10095;</button>
+</div>
+
+<script>
+  let currentIndex = 0;
+  const slides = document.getElementById('slides');
+  const totalSlides = 2;
+
+  function showSlide(index) {
+    if (index >= totalSlides) currentIndex = 0;
+    else if (index < 0) currentIndex = totalSlides - 1;
+    else currentIndex = index;
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  function nextSlide() {
+    showSlide(currentIndex + 1);
+  }
+
+  function prevSlide() {
+    showSlide(currentIndex - 1);
+  }
+
+  setInterval(() => {
+    nextSlide();
+  }, 4000);
+</script>
+
+</body>
+</html>
